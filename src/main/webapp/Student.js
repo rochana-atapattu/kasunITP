@@ -2,7 +2,6 @@
  * 
  */
 
-
 function init() {
 	console.log("hi");
 	addButton();
@@ -39,19 +38,21 @@ function searchButton() {
 	$('#search').click(function() {
 
 		console.log("searching");
+
 		var urlpttrn = form.attr('action');
-		var data ={id: $('#Id').val()};
+		var data = {
+			id : $('#Id').val()
+		};
 		$.ajax({
-
+			type : 'get',
 			url : 'addStudent',
-			data:data,
+			data : data,
 
-			success : function(data) {
-				/*
-				 * var result = data; $('#result').attr("value", result);
-				 */
+			success : function() {
+
 				console.log("found");
-				document.forms['form1'].reset();
+			/*	document.forms['form1'].reset();*/
+
 			}
 		});
 	});

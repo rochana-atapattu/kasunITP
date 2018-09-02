@@ -23,11 +23,12 @@
     <input type="text" placeholder="Id" name="Id" id="Id" required>
 
     <label><b>2.First Name</b></label>
-    <input type="text" placeholder="First Name" name="fname" value="<%=request.getAttribute("fname").toString()%>" required>
+    <input type="text" placeholder="First Name" name="fname" id="fname" value="" required>
 
     <label><b>3.Other name/s</b></label>
-    <input type="text" placeholder="Other Names" name="mname" value="Bawantha" required>
+    <input type="text" placeholder="Other Names" name="mname"  required>
 	<br/><br/>
+	<%-- <%=request.getAttribute("mname").toString()%> --%>
 	 
     <label><b>4.Surname</b></label>
     <input type="text" placeholder="Surname" name="sname" required>

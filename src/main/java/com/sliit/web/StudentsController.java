@@ -1,6 +1,7 @@
 package com.sliit.web;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -37,32 +38,32 @@ public class StudentsController extends HttpServlet {
 		StudentService st=new StudentServiceImpl();
 		Student student=st.getStudent(id);
 		
-		System.out.println(student.getFname());
+		//System.out.println(student.getFname());
 		
 		request.setAttribute("Id", student.getStid());
 		request.setAttribute("fname", student.getFname());
 		request.setAttribute("mname", student.getMname());
-/*		request.setAttribute("sname", o);
-		request.setAttribute("address", o);
-		request.setAttribute("admin", o);
-		request.setAttribute("dob", o);
-		request.setAttribute("email", o);
-		request.setAttribute("gender", o);
-		request.setAttribute("gname", o);
-		request.setAttribute("goccu", o);
-		request.setAttribute("guardpass", o);
-		request.setAttribute("nationality", o);
-		request.setAttribute("nic", o);
-		request.setAttribute("religion", o);
-		request.setAttribute("studpass", o);
-		request.setAttribute("mobile", o);*/
+		request.setAttribute("sname",student.getSname());
+		request.setAttribute("address",student.getAddress());
+		request.setAttribute("admin", student.getAdmin());
+		request.setAttribute("dob",student.getDob());
+		request.setAttribute("email",student.getEmail());
+		request.setAttribute("gender",student.getGender());
+		request.setAttribute("gname",student.getGname());
+		request.setAttribute("goccu",student.getGoccu());
+		request.setAttribute("guardpass",student.getGuardpass());
+		request.setAttribute("nationality",student.getNationality());
+		request.setAttribute("nic",student.getNic());
+		request.setAttribute("religion",student.getReligion());
+		request.setAttribute("studpass",student.getStudpass());
+		request.setAttribute("mobile",student.getMobile());
 		
-		
-		RequestDispatcher rd=request.getRequestDispatcher("Student.jsp");
-		
+		System.out.println(student.toString());
+		RequestDispatcher rd=request.getRequestDispatcher("Edit.jsp");
+		System.out.println("redirect");
 		rd.forward(request, response);
 		
-		System.out.println(id);
+		System.out.println(request.getAttribute("fname"));
 		
 	}
 
@@ -94,7 +95,12 @@ public class StudentsController extends HttpServlet {
 		
 		StudentService ss=new StudentServiceImpl();
 		
-		ss.addStudent(st);
+		try {
+			ss.addStudent(st);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
